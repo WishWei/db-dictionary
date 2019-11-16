@@ -4,6 +4,7 @@ import com.wish.dbdictionary.dto.ColumnInfoDTO;
 import com.wish.dbdictionary.dto.TableInfoDTO;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
@@ -21,6 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ExportUtil {
+
+    private final static String EXPORT_FILE_NAME = "db.doc";
+
     /**
      * 导出到word
      * @param list    表数据
@@ -28,8 +32,12 @@ public class ExportUtil {
      */
     public static void exportToWord(String path, List<TableInfoDTO> list) throws Exception
     {
-        final String fileName = "db.doc";
-        final String file = path + fileName;
+        File folder = new File(path);
+        if(!folder.exists()) {
+            log.info("指定生成路径不存在，创建路径{}", path);
+            folder.mkdirs();
+        }
+        final String file = path + EXPORT_FILE_NAME;
         Document doc = new Document(PageSize.A4);
         RtfWriter2.getInstance(doc, new FileOutputStream(file));
         doc.open();
