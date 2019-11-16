@@ -1,5 +1,5 @@
 # db-dictionary
-导出数据字典工具，支持mysql、oracle
+基于springboot的导出数据字典工具，目前支持mysql、oracle，其他数据库后期添加。
 
 ### 环境搭建
 intelij idea pom文件，导入maven工程
