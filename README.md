@@ -1,5 +1,5 @@
 # db-dictionary
-基于springboot的导出数据字典工具，目前支持mysql、oracle，其他数据库后期添加。
+基于springboot的导出数据字典文档工具，目前导出文档类型为word，支持mysql、oracle，其他数据库后期添加。
 
 ### 环境搭建
 intelij idea 打开pom文件，导入maven工程。
@@ -22,3 +22,6 @@ exportPath=/Users/wish/Downloads/
 ```
 ### 启动
 执行 DbDictionaryApplication main方法，即可导出数据字典。
+
+### 导出word样例
+![导出word样例](https://github.com/WishWei/db-dictionary/blob/master/WX20191116-210111%402x.png)
