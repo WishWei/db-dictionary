@@ -14,6 +14,8 @@ public class DialectFactory {
         switch (dialectEnum) {
             case MYSQL_DIALECT:
                 return new MysqlDialect();
+            case ORACLE_DIALECT:
+                return new OracleDialect();
         }
         return null;
     }

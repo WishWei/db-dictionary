@@ -30,6 +30,7 @@ public class ExportHandler {
             getColomnList(connection, tableInfos, dbName, dialect);
             return tableInfos;
         } catch (SQLException e) {
+            log.error(e.getMessage());
             e.printStackTrace();
             throw new CommonException("获取表结构失败");
         } finally {
@@ -67,20 +68,20 @@ public class ExportHandler {
         ResultSet rs = null;
         PreparedStatement ps = connection.prepareStatement(dialect.getTableColumnSql());
         int i = 0;
-        ps.setString(1, dbName);
+        ps.setString(1, dbName.toUpperCase());
         for (TableInfoDTO tableInfo : tableInfos) {
             log.info("读取{}：{}/{}", tableInfo.getTname(), ++i, tableInfos.size());
             List list = new ArrayList<ColumnInfoDTO>();
-            ps.setString(2, tableInfo.getTname());
+            ps.setString(2, tableInfo.getTname().toUpperCase());
             rs = ps.executeQuery();
             while(rs.next())
             {
                 ColumnInfoDTO c = new ColumnInfoDTO();
-                c.setColumnName(rs.getString("column_name"));
-                c.setType(rs.getString("data_type"));
-                c.setLength(rs.getLong("CHARACTER_MAXIMUM_LENGTH"));
-                c.setNullable(rs.getString("is_nullable"));
-                c.setComments(rs.getString("column_comment"));
+                c.setColumnName(rs.getString(1));
+                c.setType(rs.getString(2));
+                c.setLength(rs.getLong(3));
+                c.setNullable(rs.getString(4));
+                c.setComments(rs.getString(5));
                 list.add(c);
             }
             tableInfo.setColumns(list);

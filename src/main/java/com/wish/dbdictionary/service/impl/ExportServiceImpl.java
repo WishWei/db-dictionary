@@ -3,6 +3,7 @@ package com.wish.dbdictionary.service.impl;
 import com.wish.dbdictionary.dto.TableInfoDTO;
 import com.wish.dbdictionary.handler.ExportHandler;
 import com.wish.dbdictionary.service.ExportService;
+import com.wish.dbdictionary.util.DbTypeUtil;
 import com.wish.dbdictionary.util.Dialect;
 import com.wish.dbdictionary.util.DialectFactory;
 import com.wish.dbdictionary.util.ExportUtil;
@@ -24,13 +25,12 @@ public class ExportServiceImpl implements ExportService {
     private String password;
     @Value("${db.dbname}")
     private String dbname;
-    @Value("${db.dbType}")
-    private String dbType;
     @Value("${exportPath}")
     private String exportPath;
 
     @Override
     public void doExport() {
+        String dbType = DbTypeUtil.getDateType(url);
         Dialect dialect = DialectFactory.getDialect(dbType);
         List<TableInfoDTO> tableInfoList = ExportHandler.gettableCls(url, username, password, dbname, dialect);
         try {

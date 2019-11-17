@@ -17,6 +17,6 @@ public class MysqlDialect implements Dialect {
 
     @Override
     public String getTableColumnSql() {
-        return "select * from information_schema.columns where table_schema=? and table_name=?";
+        return "select column_name,data_type,character_maximum_length,is_nullable,column_comment from information_schema.columns where table_schema=? and table_name=?";
     }
 }

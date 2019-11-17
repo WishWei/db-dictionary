@@ -2,7 +2,8 @@ package com.wish.dbdictionary.util;
 
 public enum DialectEnum {
 
-    MYSQL_DIALECT("mysql");
+    MYSQL_DIALECT("mysql"),
+    ORACLE_DIALECT("oracle");;
 
     private String code;
 
