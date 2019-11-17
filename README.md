@@ -15,8 +15,6 @@ db.username=root
 db.password=root123
 #数据库名
 db.dbname=sc_auth
-#数据库类型，当前支持mysql、oracle
-db.dbType=mysql
 #导出路径
 exportPath=/Users/wish/Downloads/
 ```
