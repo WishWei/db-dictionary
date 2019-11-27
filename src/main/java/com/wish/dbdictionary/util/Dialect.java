@@ -18,4 +18,10 @@ public interface Dialect {
      * @return
      */
     String getTableColumnSql();
+
+    /**
+     * 表名是否大写
+     * @return
+     */
+    boolean upperCase();
 }

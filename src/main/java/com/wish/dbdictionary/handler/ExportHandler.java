@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 @Slf4j
 public class ExportHandler {
@@ -68,11 +69,11 @@ public class ExportHandler {
         ResultSet rs = null;
         PreparedStatement ps = connection.prepareStatement(dialect.getTableColumnSql());
         int i = 0;
-        ps.setString(1, dbName.toUpperCase());
+        ps.setString(1, dialect.upperCase() ? dbName.toUpperCase() : dbName.toLowerCase());
         for (TableInfoDTO tableInfo : tableInfos) {
             log.info("读取{}：{}/{}", tableInfo.getTname(), ++i, tableInfos.size());
             List list = new ArrayList<ColumnInfoDTO>();
-            ps.setString(2, tableInfo.getTname().toUpperCase());
+            ps.setString(2, dialect.upperCase() ? tableInfo.getTname().toUpperCase() : tableInfo.getTname().toLowerCase());
             rs = ps.executeQuery();
             while(rs.next())
             {

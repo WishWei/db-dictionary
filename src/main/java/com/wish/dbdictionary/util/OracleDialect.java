@@ -23,4 +23,9 @@ public class OracleDialect implements Dialect{
                 "  FROM all_tab_cols a left join user_col_comments b on a.table_name = b.table_name and a.column_name = b.column_name\n" +
                 " WHERE a.owner=? and a.table_name = ?";
     }
+
+    @Override
+    public boolean upperCase() {
+        return true;
+    }
 }
