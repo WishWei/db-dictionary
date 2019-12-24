@@ -4,34 +4,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <title>数据字典导出</title>
-    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
-    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui-append.css" rel="stylesheet">
+
     <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
 </head>
 
 <body>
-<p>
-    <span>数据字典导出</span>
-</p>
-<form id="queryForm">
-    url：
-    <input type="text" name="url">
-    <br/>
-    用户名：
-    <input type="text" name="username">
-    <br/>
-    密码：
-    <input type="text" name="password">
-    <br/>
-    库名：
-    <input type="text" name="dbname">
-    <br/>
-    <br/>
-    <input id="exportBtn" type="button" value="导出数据字典" onclick="exportDb()"/>
-</form>
 
+<div style="padding: 100px;">
+    <form id="queryForm">
+        url：
+        <input type="text" name="url" style="width: 400px;">
+        <br/>
+        用户名：
+        <input type="text" name="username" style="width: 400px;">
+        <br/>
+        密码：
+        <input type="text" name="password" style="width: 400px;">
+        <br/>
+        库名：
+        <input type="text" name="dbname" style="width: 400px;">
+        <br/>
+        <br/>
+        <input id="exportBtn" type="button" value="导出数据字典" onclick="exportDb()"/>
+    </form>
+</div>
 <script type="text/javascript">
     exportDb = function () {
         location.href = '/api/v1.0/export/export.do?' + $("#queryForm").serialize();
